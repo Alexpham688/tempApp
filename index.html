@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Temp App</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1>SEARCH  <span>TEMPERATURE</span></h1>
+      </header>
+      <form id="search-form">
+        <div id="wrapper">
+          <div class="col-8 co-sm-10 col-lg-8" id="field-container">
+
+              <input class="form-control input-large"type="text" focus="search" id="location"placeholder="Search....">
+
+              <button type="button"id="weather-location" class="btn btn-success"></button></br>
+              <span id="error">
+          </div>
+        </div>
+      </form>
+      <div class="cityOutput">
+          <h3 class="outputTemp">Temperature Output</h3>
+          <h3 class="outputHumid">Humidity Output</h3>
+        <div class="tempOutput">
+
+          <div class="temp">
+            <p>Temperature<span id="main-temp"></span></p>
+            <h3 ></h3>
+          </div>
+          <div class="temp">
+            <p id="show-weather"></p>
+          </div>
+        </div>
+        <div class="humidOutput">
+          <div class="humid">
+            <p id="">Humidity<span id="main-humidity"></span></p>
+          </div>
+          <div class="humid">
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <div class="cityOutput">
+          <h3>Minneapolis,US</h3>
+        <div class="tempOutput">
+
+          <div class="temp">
+            <p>Temperature</p>
+          </div>
+          <div class="temp">
+            <p id="minn-temp"></p>
+          </div>
+        </div>
+        <div class="humidOutput">
+          <div class="humid">
+            <p>Humidity</p>
+          </div>
+          <div class="humid">
+            <p id="minn-humid"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p> Copyright &copy; 2017, All rights reserved by AP.</p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js">
+    </script>
+    <script src="app.js"></script>
+    
+
+  </body>
+</html>
