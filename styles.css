@@ -130,7 +130,7 @@ h3 {
 }
 .outputHumid {
   margin-left: 330px;
-  margin-top: -40px;
+  margin-top: 60px;
 }
 #error {
   font-size: 1.3em;
@@ -144,10 +144,12 @@ footer {
   text-align: center;
 }
 #location {
+
   box-sizing: border-box;
   display: block;
   width: 48%;
-  padding: 10px 7px;
+  margin-top: 10px;
+  padding: 7px 7px;
   padding-right: 43px;
   background: #fff;
   color: #666;
@@ -159,7 +161,7 @@ footer {
   box-shadow: 0 1px 2px rgba(0,0,0,1), 0 0 0 6px #f0f0f0;
 }
 #minn-humid {
-  color: red;
+  color: blue;
   font-size: 1.3em
 }
 #minn-temp {
@@ -167,6 +169,12 @@ footer {
   font-size: 1.3em
 }
 #show-weather {
+  margin-top:-55px;
   font-size: 1.3em;
   color: red;
+  width: 550px;
+  height: 40px;
+  margin-left: 40px;
+  text-transform: uppercase;
+
 }
