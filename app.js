@@ -1,16 +1,6 @@
 $(document).ready(function(){
 
-  $.ajax({
-    url: 'http://api.openweathermap.org/data/2.5/weather?q=minneapolis&units=metric&APPID=3f196ebe1a8f3f884f4a32af14171ea6',
-    type:"GET",
-    dataType:"json",
-    async: false,
-    success: function(data){
-      console.log(data.main.temp);
-      $('#minn-temp').html(data.main.temp + ' &#176' + " C");
-      $('#minn-humid').html(data.main.humidity + " &#37")
-    }
-  });
+
   //focus event
   var button = $("#weather-location");
   var search = $('#location');
@@ -33,6 +23,18 @@ $(document).ready(function(){
       }, 400, function(){});
 
     });
+    }
+  });
+
+  $.ajax({
+    url: 'http://api.openweathermap.org/data/2.5/weather?q=minneapolis&units=metric&APPID=3f196ebe1a8f3f884f4a32af14171ea6',
+    type:"GET",
+    dataType:"json",
+    async: false,
+    success: function(data){
+      console.log(data.main.temp);
+      $('#minn-temp').html(data.main.temp + ' &#176' + " C");
+      $('#minn-humid').html(data.main.humidity + " &#37")
     }
   });
 
