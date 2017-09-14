@@ -1,10 +1,14 @@
 
-input:focus {
-  background: #CDEEFF;
+#location:focus{
+  background-color: #5A66F1;
+  color: #fff;
+}
+#location:focus::-webkit-input-placeholder {
+  color: #fff;
 }
 header {
   padding: 30px 20px;
-  background-color: #f4f4f4;
+  background: #f4f4f4;
 }
 #container {
   width: 740px;
@@ -28,7 +32,7 @@ span {
 #search-form {
   display: block;
   margin-bottom: 15px;
-  /*padding: 30px 20px 20px 20px;*/
+
 }
 #field-container {
   display: block;
@@ -59,14 +63,7 @@ span {
   filter: alpha(opacity= 90);
   opacity: 0.9;
 }
-#output {
-  width: 500px;
-  height: 150px;
-  border: 2px solid green;
-  border-radius: 5px;
-  margin: 0 auto;
-  margin-top: 20px;
-}
+
 .humidityOne {
   float: right;
   width: 248px;
@@ -104,18 +101,22 @@ h3 {
   height: 50px;
   margin-left: 7px;
   position: absolute;
+
 }
 .cityOutput {
   width: 620px;
   height: 200px;
-  border: 2px solid green;
+  padding: 2px 2px;
   margin: 0 auto;
+  margin-bottom: 10px;
   margin-top: 20px;
+  background: #f4f4f4;
 }
 .humid {
   border: 2px solid #aaa;;
   width: 300px;
   height: 50px;
+  background:#fff;
 }
 .humid p {
   margin-left: 30px;
@@ -127,6 +128,7 @@ h3 {
   border: 2px solid #aaa;;
   height: 50px;
   width: 300px;
+  background:#fff;
 }
 .outputHumid {
   margin-left: 330px;
@@ -151,7 +153,7 @@ footer {
   margin-top: 10px;
   padding: 10px 7px;
   padding-right: 43px;
-  background: #fff;
+  background: #F1F6FF;
   color: #666;
   border: 2px solid orange;
   border-bottom-color: #ccc;
