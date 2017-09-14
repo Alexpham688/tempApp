@@ -19,7 +19,7 @@ $(document).ready(function(){
       width: "45%"
     }, 500, function(){
       $(button).animate({
-        right: "360px"
+        right: "373px"
       }, 500, function(){});
 
     });
