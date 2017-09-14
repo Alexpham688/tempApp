@@ -18,12 +18,10 @@ $(document).ready(function(){
     if(search.val() === "") {
       $(search).animate({
       width: "45%"
-    }, 500, function(){
+    }, 500, function(){});
       $(button).animate({
-        right: "370px"
+        right: "374px"
       }, 500, function(){});
-
-    });
     }
   });
 
