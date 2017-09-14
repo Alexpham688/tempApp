@@ -42,7 +42,7 @@ $(document).ready(function(){
 
   $('button').on("click", function(){
       var location = $('#location').val();
-      $("#location").val("");
+
       $("#show-weather").html("Temperature & Humidity for " + location + ".");
         $.ajax({
           url:'http://api.openweathermap.org/data/2.5/weather?q=' + location + '&units=metric&APPID=3f196ebe1a8f3f884f4a32af14171ea6',
@@ -55,9 +55,10 @@ $(document).ready(function(){
             $('#main-humidity').html(data.main.humidity  + " &#37");
           },
           error: function(){
-              $('#error').html("Enter a city!");
-              $('#error').reset();
+              alert("Enter a city!");
+
               }
         });
-});
+      });
+
 });
