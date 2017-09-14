@@ -11,7 +11,8 @@ $(document).ready(function(){
     $(button).animate({
     right: '10px'
   }, 500);
-  });
+ });
+
   //blur event
   $(search).on("blur", function() {
     if(search.val() === "") {
@@ -19,7 +20,7 @@ $(document).ready(function(){
       width: "45%"
     }, 500, function(){
       $(button).animate({
-        right: "373px"
+        right: "370px"
       }, 500, function(){});
 
     });
@@ -56,9 +57,9 @@ $(document).ready(function(){
           },
           error: function(){
               alert("Enter a city!");
-
-              }
+          }
         });
-      });
+        $('#location').val("");
 
+      });
 });
