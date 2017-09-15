@@ -39,8 +39,6 @@ $(document).ready(function(){
     }
   });
 
-
-
   $('button').on("click", function(){
       var location = $('#location').val();
 
@@ -50,19 +48,24 @@ $(document).ready(function(){
           type:"GET",
           dataType: "json",
           async: true,
-          data: {limit:6},
+          data: {limit: 6},
           success: function(data){
             console.log(data.main.temp);
             $("#main-temp").html(data.main.temp * (9/5) + 32 + ' &#176' + " F");
             $('#main-humidity').html(data.main.humidity  + " &#37");
             $('#main-description').html(data.weather[0].description);
-
           },
           error: function(){
               alert("Enter a city!");
           }
         });
+        // clears input
         $('#location').val("");
+
+         // adds image to background depending on condition
+        if($('#minn-description').is(':contains("clear")')){
+          $('body').css('background-image','url("img/clear.jpg")');
+        }
 
       });
 });
