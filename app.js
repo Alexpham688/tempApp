@@ -20,7 +20,7 @@ $(document).ready(function(){
       width: "45%"
     }, 500, function(){});
       $(button).animate({
-        right: "374px"
+        right: "377px"
       }, 500, function(){});
     }
   });
@@ -31,11 +31,14 @@ $(document).ready(function(){
     dataType:"json",
     async: false,
     success: function(data){
-      console.log(data.main.temp);
+      console.log(data.main.temp.toFixed(2));
       console.log(data.weather[0].description);
-      $('#minn-temp').html(data.main.temp * (9/5) + 32 + ' &#176' + " F");
+      $('#minn-temp').html(data.main.temp.toFixed(1) * (9/5) + 32 + ' &#176' + " F");
       $('#minn-humid').html(data.main.humidity + " &#37");
       $('#minn-description').html(data.weather[0].description);
+      if(data.weather[0].description.includes("clouds")){
+          $('#container').css("background", "url('img/scattered.png')");
+      }
     }
   });
 
@@ -51,9 +54,11 @@ $(document).ready(function(){
           data: {limit: 6},
           success: function(data){
             console.log(data.main.temp);
-            $("#main-temp").html(data.main.temp * (9/5) + 32 + ' &#176' + " F");
+            console.log(data.weather[0].description);
+            $("#main-temp").html(data.main.temp.toFixed(1) * (9/5) + 32 + ' &#176' + " F");
             $('#main-humidity').html(data.main.humidity  + " &#37");
             $('#main-description').html(data.weather[0].description);
+
           },
           error: function(){
               alert("Enter a city!");
@@ -63,9 +68,42 @@ $(document).ready(function(){
         $('#location').val("");
 
          // adds image to background depending on condition
-        if($('#minn-description').is(':contains("clear")')){
-          $('body').css('background-image','url("img/clear.jpg")');
-        }
+});
 
-      });
+  var temp = $("#minn-temp");
+  var time = new Date();
+  var month = time.getMonth() + 1;
+  var background = "";
+  var season = month;
+  if(season >= 6 && season <= 8) {
+    background = "url('img/summer.jpg')";
+  } else if(season >= 9 && season <= 11) {
+    background = 'url("img/fall.jpg")';
+  } else if (season === 12 || season <= 2){
+    background = 'url("img/snow.jpg")';
+  } else if (season >= 3 && season <= 5) {
+    background = 'url("img/spring.jpg")';
+  }
+  console.log(season);
+
+  $('.city-output').css('background', background);
+
+  if(season >= 6 && season <= 8) {
+    background = "#9ECDFF";
+  } else if(season >= 9 && season <= 11) {
+    background = '#FF9433';
+  } else if (season === 12 || season <= 2){
+    background =  "";
+  } else if (season >= 3 && season <= 5) {
+    background = "#F7D9FF";
+  }
+  $('body').css('background', background);
+
+
+  if($('#main-description').is(':contains("clear")')){
+     $('body').css('background-image','url("img/clear.jpg")');
+
+   }
+
+
 });
