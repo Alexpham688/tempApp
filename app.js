@@ -24,6 +24,21 @@ $(document).ready(function(){
       }, 500, function(){});
     }
   });
+  // adds image to body depending on condition
+      var time = new Date();
+      var month = time.getMonth() + 1;
+      var background = "";
+      var season = month;
+        if(season >= 6 && season <= 8) {
+          background = "url('img/summer.jpg')";
+        } else if(season >= 9 && season <= 11) {
+          background = 'url("img/fall.jpg")';
+        } else if (season === 12 || season <= 2){
+          background = 'url("img/snow.jpg")';
+        } else if (season >= 3 && season <= 5) {
+          background = 'url("img/spring.jpeg")';
+        }
+        $('body').css('background', background);
 
   $.ajax({
     url: 'http://api.openweathermap.org/data/2.5/weather?q=minneapolis&units=metric&APPID=3f196ebe1a8f3f884f4a32af14171ea6',
@@ -36,8 +51,25 @@ $(document).ready(function(){
       $('#minn-temp').html(data.main.temp.toFixed(1) * (9/5) + 32 + ' &#176' + " F");
       $('#minn-humid').html(data.main.humidity + " &#37");
       $('#minn-description').html(data.weather[0].description);
+
       if(data.weather[0].description.includes("clouds")){
-          $('#container').css("background", "url('img/scattered.png')");
+          $('.cityOutput').css("background", "url('img/cloudy.png')");
+      } else if (data.weather[0].description.includes("clear")) {
+          $('.cityOutput').css("background", "url('img/clear.jpg')");
+      } else if (data.weather[0].description.includes("rain")) {
+          $('.cityOutput').css("background","url('img/lightrain.jpg')");
+      } else if (data.weather[0].description.includes("shower")) {
+          $('.cityOutput').css("background","url('img/shower.jpg')");
+      } else if (data.weather[0].description.includes("storm"))  {
+          $('.cityOutput').css("background","url('img/storm.jpg')");
+      } else if (data.weather[0].description.includes("misty")) {
+          $('.cityOutput').css('background',"url('img/misty.png')");
+      } else if (data.weather[0].description.includes("snow")) {
+          $('.cityOutput').css('background',"url('img/light-snow.jpg')");
+      } else if (data.weather[0].description.includes("heavy snow")) {
+          $(".cityOutput").css("background","url('img/heavy-snow.jpg')");
+      } else if (data.weather[0].description.includes("haze")) {
+          $(".cityOutput").css("background","url('img/haze.jpg')");
       }
     }
   });
@@ -55,10 +87,30 @@ $(document).ready(function(){
           success: function(data){
             console.log(data.main.temp);
             console.log(data.weather[0].description);
-            $("#main-temp").html(data.main.temp.toFixed(1) * (9/5) + 32 + ' &#176' + " F");
+            $("#main-temp").html(data.main.temp.toFixed(0) * (9/5) + 32 + ' &#176' + " F");
             $('#main-humidity').html(data.main.humidity  + " &#37");
             $('#main-description').html(data.weather[0].description);
 
+              // adds images to div background depending on condition
+            if(data.weather[0].description.includes("clouds")){
+                $('.city-output').css("background", "url('img/cloudy.png')");
+            } else if (data.weather[0].description.includes("clear")) {
+                $('.city-output').css("background", "url('img/clear.jpg')");
+            } else if (data.weather[0].description.includes("rain")) {
+                $('.city-output').css("background","url('img/lightrain.jpg')");
+            } else if (data.weather[0].description.includes("shower")) {
+                $('.city-output').css("background","url('img/shower.jpg')");
+            } else if (data.weather[0].description.includes("storm"))  {
+                $('.city-output').css("background","url('img/storm.jpg')");
+            } else if (data.weather[0].description.includes("misty")) {
+                $('.city-output').css('background',"url('img/misty.png')");
+            } else if (data.weather[0].description.includes("snow")) {
+                $('.city-output').css('background',"url('img/light-snow.jpg')");
+            } else if (data.weather[0].description.includes("heavy snow")) {
+                $(".city-output").css("background","url('img/heavy-snow.jpg')");
+            } else if (data.weather[0].description.includes("haze")) {
+                $('.city-output').css('background',"url('img/haze.jpg')");
+            };
           },
           error: function(){
               alert("Enter a city!");
@@ -66,44 +118,8 @@ $(document).ready(function(){
         });
         // clears input
         $('#location').val("");
+        });
 
-         // adds image to background depending on condition
-});
-
-  var temp = $("#minn-temp");
-  var time = new Date();
-  var month = time.getMonth() + 1;
-  var background = "";
-  var season = month;
-  if(season >= 6 && season <= 8) {
-    background = "url('img/summer.jpg')";
-  } else if(season >= 9 && season <= 11) {
-    background = 'url("img/fall.jpg")';
-  } else if (season === 12 || season <= 2){
-    background = 'url("img/snow.jpg")';
-  } else if (season >= 3 && season <= 5) {
-    background = 'url("img/spring.jpg")';
-  }
-  console.log(season);
-
-  $('.city-output').css('background', background);
-
-  if(season >= 6 && season <= 8) {
-    background = "#9ECDFF";
-  } else if(season >= 9 && season <= 11) {
-    background = '#FF9433';
-  } else if (season === 12 || season <= 2){
-    background =  "";
-  } else if (season >= 3 && season <= 5) {
-    background = "#F7D9FF";
-  }
-  $('body').css('background', background);
-
-
-  if($('#main-description').is(':contains("clear")')){
-     $('body').css('background-image','url("img/clear.jpg")');
-
-   }
 
 
 });
