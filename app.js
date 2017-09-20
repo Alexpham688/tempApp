@@ -17,10 +17,10 @@ $(document).ready(function(){
   $(search).on("blur", function() {
     if(search.val() === "") {
       $(search).animate({
-      width: "45%"
+      width: "50%"
     }, 500, function(){});
       $(button).animate({
-        right: "377px"
+        right: "365px"
       }, 500, function(){});
     }
   });
@@ -46,9 +46,9 @@ $(document).ready(function(){
     dataType:"json",
     async: false,
     success: function(data){
-      console.log(data.main.temp.toFixed(2));
+      console.log(data.main.temp.toFixed(0));
       console.log(data.weather[0].description);
-      $('#minn-temp').html(data.main.temp.toFixed(1) * (9/5) + 32 + ' &#176' + " F");
+      $('#minn-temp').html((data.main.temp.toFixed(2)) * Math.floor(9/5) + 32 + ' &#176' + " F");
       $('#minn-humid').html(data.main.humidity + " &#37");
       $('#minn-description').html(data.weather[0].description);
 
@@ -70,6 +70,12 @@ $(document).ready(function(){
           $(".cityOutput").css("background","url('img/heavy-snow.jpg')");
       } else if (data.weather[0].description.includes("haze")) {
           $(".cityOutput").css("background","url('img/haze.jpg')");
+      } else if (data.weather[0].description.includes("hurricane")){
+          $(".cityOutput").css("background","url('img/hurricane.jpg')");
+      } else if (data.weather[0].description.includes("tornado")) {
+          $(".cityOutput").css("background","url('img/tornado.jpg')");
+      } else if (data.weather[0].description.includes('windy')) {
+          $(".cityOutput").css("background","url('img/windy.jpg')");
       }
     }
   });
@@ -87,7 +93,7 @@ $(document).ready(function(){
           success: function(data){
             console.log(data.main.temp);
             console.log(data.weather[0].description);
-            $("#main-temp").html(data.main.temp.toFixed(0) * (9/5) + 32 + ' &#176' + " F");
+            $("#main-temp").html(data.main.temp.toFixed(2) * Math.floor(9/5) + 32 + ' &#176' + " F");
             $('#main-humidity').html(data.main.humidity  + " &#37");
             $('#main-description').html(data.weather[0].description);
 
@@ -110,7 +116,13 @@ $(document).ready(function(){
                 $(".city-output").css("background","url('img/heavy-snow.jpg')");
             } else if (data.weather[0].description.includes("haze")) {
                 $('.city-output').css('background',"url('img/haze.jpg')");
-            };
+            } else if (data.weather[0].description.includes("hurricane")) {
+                $('.city-output').css('background',"url('img/hurricane.jpg')");
+            } else if (data.weather[0].description.includes("tornado")) {
+                $('.city-output').css('background',"url('img/tornado.jpg')");
+            } else if (data.weather[0].description.includes("windy")) {
+                $('.city-output').css('background',"url('img/windy.jpg')");
+            }
           },
           error: function(){
               alert("Enter a city!");
